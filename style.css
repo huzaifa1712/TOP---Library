@@ -11,6 +11,14 @@ body{
     font-family:Arial, Helvetica, sans-serif;
     background-color: whitesmoke;
     margin: 0 auto;
-    width: 960px;
+    width: 60%;
     border: 2px solid black;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    row-gap: 2rem;
+    justify-items: center;
+}
+
+.card{
+    border:2px solid black;
 }
