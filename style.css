@@ -32,6 +32,7 @@ body{
 .card{
     text-align: center;
     border:2px solid black;
+    background-color: #fae6a9d6;
     padding:1.5rem;
     margin:1rem;
 
@@ -40,4 +41,14 @@ body{
 .card h3{
     font-weight:600;
     font-size: 1.3rem;
+}
+
+.btn-remove{
+    padding:0.5rem;
+    font-family: inherit;
+    font-size: 1em;
+    background-color: antiquewhite;
+    font-weight:500;
+    margin-top:0.5em;
+    
 }

@@ -18,6 +18,7 @@ class View{
         if(bookObjects.length == 0){
             // use default functions
             this.#setEmptyBooksMessage();
+            return;
         }
         bookObjects.forEach(bookObj => {
             this.addBookToDisplay(bookObj);
@@ -39,11 +40,11 @@ class View{
         card.classList.add(this.#SELECTORS.CARD_CLASS);
         card.innerHTML = 
             `
-            <h3>${book.title}, ID: ${id}</h3>
+            <h3>${book.title}</h3>
             <p class = "author">${book.author}</p>
             <p class = "pages">${book.pages} pages</p>
             <p class = "read">${book.getReadDesc()}</p>
-            
+            <button class = "btn-remove" id = ${id}> Remove </button>
             `
         return card;
     }
