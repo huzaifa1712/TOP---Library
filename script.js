@@ -15,6 +15,8 @@
 //     }
 // }
 
+
+
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
@@ -43,12 +45,18 @@ const books = [
 const library = document.getElementById("library");
 
 function bookToCard(book){
-    return `<div class = "card">
-            <h3>${book.title}</h3>
-            <p class = "author">${book.author}</p>
-            <p class = "pages">${book.pages} pages</p>
-            <p class = "read">${book.getReadDesc()}</p>
-        </div>`
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = 
+        `
+         <h3>${book.title}</h3>
+         <p class = "author">${book.author}</p>
+         <p class = "pages">${book.pages} pages</p>
+         <p class = "read">${book.getReadDesc()}</p>
+         
+         `
+    
+    return card;
 }
 
 //  const firstCard = bookToCard(books[0]);
@@ -59,4 +67,4 @@ function bookToCard(book){
 // library.innerHTML += firstCard;
 // library.innerHTML += firstCard;
 
-books.forEach(book => library.innerHTML += bookToCard(book)); 
+books.forEach(book => library.appendChild(bookToCard(book))); 
