@@ -10,13 +10,15 @@
 */
 class View{
     #SELECTORS;
-    constructor(){
+    constructor(handlers){
          this.#SELECTORS = {
             LIBRARY: document.getElementById("library"),
             CARD_CLASS: "card",
             BTN_REMOVE_CLASS: "btn-remove",
             BTN_VALUE: "data-value"
         };
+
+        this.HANDLERS = handlers;
     }
 
     // input: Array of bookObjects with {id, book}
@@ -24,7 +26,7 @@ class View{
     displayBooks(bookObjects){
         if(bookObjects.length == 0){
             // use default functions
-            this.#setEmptyBooksMessage();
+            this.setEmptyBooksMessage();
             return;
         }
         bookObjects.forEach(bookObj => {
@@ -39,9 +41,10 @@ class View{
         this.#SELECTORS.LIBRARY.appendChild(card);
     }
 
-    // handler function is passed in from Controller, execute handler with args from event listener on button
-    bindRemoveAction(handler){
-
+    // remove book from display - pass in button node
+    #removeCardFromDisplay(button){
+        const card = button.closest("." + this.#SELECTORS.CARD_CLASS);
+        this.#SELECTORS.LIBRARY.removeChild(card);
     }
 
     #createRemoveButton(id){
@@ -51,8 +54,9 @@ class View{
         removeBtn.textContent = "Remove";
 
         removeBtn.addEventListener('click', function(evt){
-
-        });
+            this.#removeCardFromDisplay(removeBtn);
+            this.HANDLERS.removeBookHandler(id);        
+        }.bind(this));
 
         return removeBtn;
     }
@@ -79,7 +83,7 @@ class View{
     }
 
     // to set default message if no books
-    #setEmptyBooksMessage(){
+    setEmptyBooksMessage(){
         const template = "<p> <strong> No books to display. </strong> </p>";
         this.#SELECTORS.LIBRARY.innerHTML = template;
     }

@@ -21,12 +21,21 @@ function Controller(){
         );
     }
 
+    function removeBookHandler(id){
+        bookData.deleteBook(id);
+
+        if(Object.keys(bookData.getBooks()).length == 0){
+            view.setEmptyBooksMessage();
+        }
+    }
+
+    const bookData = new BookData();
+    const view = new View({
+        removeBookHandler:removeBookHandler
+    });
     // get books from data source and display using View
     // convert to BookObject format before passing into View
     function init(){
-        const bookData = new BookData();
-        const view = new View();
-        
         const books = bookData.getBooks();
         const bookObjects = booksToBookObjects(books);
         view.displayBooks(bookObjects);
