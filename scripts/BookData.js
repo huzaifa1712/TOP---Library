@@ -23,8 +23,6 @@ class BookData{
         };
 
         this.#id = Object.keys(this.#books).length;
-        console.log(Book);
-
     }
 
     // Create: add a book with requested info to data
