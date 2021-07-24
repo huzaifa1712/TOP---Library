@@ -9,6 +9,7 @@ class View{
          this.#SELECTORS = {
             LIBRARY: document.getElementById("library"),
             CARD_CLASS: "card",
+            BTN_REMOVE_CLASS: "btn-remove"
         };
     }
 
@@ -32,20 +33,38 @@ class View{
         this.#SELECTORS.LIBRARY.appendChild(card);
     }
 
+    // handler function is passed in from Controller, execute handler with args from event listener on button
+    bindRemoveAction(handler){
+
+    }
+
+    #createRemoveButton(id){
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.add(this.#SELECTORS.BTN_REMOVE_CLASS);
+        removeBtn.setAttribute("data-value", id);
+        removeBtn.textContent = "Remove";
+
+        return removeBtn;
+    }
     // input: Book object conforming to Book class
     // output: div node
     #bookToCard(bookObj){
         const {id, book} = bookObj;
         const card = document.createElement("div");
         card.classList.add(this.#SELECTORS.CARD_CLASS);
+
+        const removeBtn = this.#createRemoveButton(id);
+
         card.innerHTML = 
             `
             <h3>${book.title}</h3>
             <p class = "author">${book.author}</p>
             <p class = "pages">${book.pages} pages</p>
             <p class = "read">${book.getReadDesc()}</p>
-            <button class = "btn-remove" id = ${id}> Remove </button>
             `
+        
+        card.appendChild(removeBtn);
+
         return card;
     }
 

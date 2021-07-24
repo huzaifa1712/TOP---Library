@@ -1,4 +1,3 @@
-import Book from './Book.js';
 import BookData from './BookData.js';
 import BookObject from './BookObject.js';
 import View from './View.js';
