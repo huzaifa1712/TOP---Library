@@ -10,9 +10,11 @@ class View{
         };
     }
 
-
-    addBook(book){
-
+    // input: Book object
+    // output: side effect of adding book to display
+    addBookToDisplay(book){
+        const card = this.#bookToCard(book);
+        this.#SELECTORS.LIBRARY.appendChild(card);
     }
 
     // input: Book object conforming to Book class
