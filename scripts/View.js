@@ -17,6 +17,7 @@ class View{
     displayBooks(bookObjects){
         if(bookObjects.length == 0){
             // use default functions
+            this.#setEmptyBooksMessage();
         }
         bookObjects.forEach(bookObj => {
             this.addBookToDisplay(bookObj);
@@ -45,6 +46,12 @@ class View{
             
             `
         return card;
+    }
+
+    // to set default message if no books
+    #setEmptyBooksMessage(){
+        const template = "<p> <strong> No books to display. </strong> </p>";
+        this.#SELECTORS.LIBRARY.innerHTML = template;
     }
 }
 
