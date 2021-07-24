@@ -52,5 +52,10 @@ function bookToCard(book){
 import BookData from './BookData.js';
 const data = new BookData();
 
-let x = data.getBooks();
-console.log(x);
+console.log("Before Update 0");
+console.log(data.getBooks());
+console.log("After");
+data.updateBook(0, {pages: 2});
+console.log(data.getBooks());
+
+
