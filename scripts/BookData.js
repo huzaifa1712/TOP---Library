@@ -30,8 +30,8 @@ class BookData{
     // Create: add a book with requested info to data
     addBook(title, author, pages, read){
         const newBook = new Book(title, author, pages, read);
-        this.#books[this.getID()] = newBook;
-        this.incrementID();
+        this.#books[this.#getID()] = newBook;
+        this.#incrementID();
     }
 
 
@@ -82,11 +82,11 @@ class BookData{
         return false;
     }
 
-    getID(){
+    #getID(){
         return this.#id;
     }
 
-    incrementID(){
+    #incrementID(){
         this.#id++;
     }
 
