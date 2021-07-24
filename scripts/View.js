@@ -3,13 +3,19 @@
  * Methods receive object as: { id: n, book: Book obj} so can easily access other props
  * as needed
  */
+
+/*
+    Initialise View inside Controller with an object containing functions corresponding to add,remove etc
+    handlers. Then use this object within View wherever necessary
+*/
 class View{
     #SELECTORS;
     constructor(){
          this.#SELECTORS = {
             LIBRARY: document.getElementById("library"),
             CARD_CLASS: "card",
-            BTN_REMOVE_CLASS: "btn-remove"
+            BTN_REMOVE_CLASS: "btn-remove",
+            BTN_VALUE: "data-value"
         };
     }
 
@@ -41,8 +47,12 @@ class View{
     #createRemoveButton(id){
         const removeBtn = document.createElement("button");
         removeBtn.classList.add(this.#SELECTORS.BTN_REMOVE_CLASS);
-        removeBtn.setAttribute("data-value", id);
+        removeBtn.setAttribute(this.#SELECTORS.BTN_VALUE, id);
         removeBtn.textContent = "Remove";
+
+        removeBtn.addEventListener('click', function(evt){
+
+        });
 
         return removeBtn;
     }

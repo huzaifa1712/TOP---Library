@@ -3,8 +3,7 @@ import BookObject from './BookObject.js';
 import View from './View.js';
 
 function Controller(){
-    const bookData = new BookData();
-    const view = new View();
+    
 
     // input: id: book pairs from BookData
     // output: Array of {id, book} objects according to BookObject
@@ -25,6 +24,9 @@ function Controller(){
     // get books from data source and display using View
     // convert to BookObject format before passing into View
     function init(){
+        const bookData = new BookData();
+        const view = new View();
+        
         const books = bookData.getBooks();
         const bookObjects = booksToBookObjects(books);
         view.displayBooks(bookObjects);
