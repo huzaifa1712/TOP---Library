@@ -4,24 +4,37 @@
 
 
 html{
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 body{
     font-family: 'Source Sans Pro', sans-serif;
-    background-color: whitesmoke;
+    background-color: white;
     margin: 0 auto;
     width: 65%;
+    min-width: 700px;
     border: 2px solid black;
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    /* display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
     row-gap: 2rem;
-    justify-items: center;
+    justify-items:start;
+    padding:2rem */
+}
+
+#library{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap:1rem;
+    justify-items:center;
     padding:2rem
 }
 
 .card{
+    text-align: center;
     border:2px solid black;
+    padding:1.5rem;
+    margin:1rem;
+
 }
 
 .card h3{
