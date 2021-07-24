@@ -15,7 +15,10 @@ class View{
     // input: Array of bookObjects with {id, book}
     // output: overwrite current display with these books
     displayBooks(bookObjects){
-        bookObjects.array.array.forEach(bookObj => {
+        if(bookObjects.length == 0){
+            // use default functions
+        }
+        bookObjects.forEach(bookObj => {
             this.addBookToDisplay(bookObj);
         });
     }
@@ -44,3 +47,5 @@ class View{
         return card;
     }
 }
+
+export default View;

@@ -4,12 +4,11 @@
  */
 function BookObject(book, metadata){
     const obj = {book};
-    for(key in metadata){
+
+    for(let key in metadata){
         obj[key] = metadata[key]
     }
     return obj;
-
 }
 
-let book = {title:"title", author: "author"};
-let meta = {id:1};
+export default BookObject;
