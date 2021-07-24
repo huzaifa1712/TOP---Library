@@ -52,4 +52,5 @@ function bookToCard(book){
 import BookData from './BookData.js';
 const data = new BookData();
 
-
+let x = data.getBooks();
+console.log(x);
