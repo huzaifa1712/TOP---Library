@@ -21,7 +21,55 @@ class View{
         };
 
         this.HANDLERS = handlers;
+
+        this.#setup();
     }
+
+    #setElementDisplay(element, show){
+        const curr = element.style.display;
+
+        // asking to show + currently not showing = show the elem
+        if(show && curr == "none"){
+            element.style.display = "";
+        }
+
+        // asking to hide + currently showing = hide the elem
+        else if(curr == ""){
+            element.style.display = "none";
+        }
+    }
+
+    // set to the opposite of what it is. initial: true means show at first, false means don't show at first
+    // use closures and HOF to create an abstract toggler function for any element, setting display also abstracted due to 
+    // setElementDisplay
+    #toggleElementDisplay(element, initial){
+
+        this.#setElementDisplay(element, initial);
+
+        return (() => {
+            initial = !initial;
+            this.#setElementDisplay(element, initial);
+        });
+
+    }   
+
+    #formSetup(){
+        const form = this.#SELECTORS.NEW_BOOK_FORM;
+        form.style.display = "none";
+
+        const formToggler = this.#toggleElementDisplay(form, false);
+
+        this.#SELECTORS.NEW_BOOK_BTN.addEventListener('click', function(){
+            formToggler();
+
+        }.bind(this));
+    }
+
+    #setup(){
+        this.#formSetup();
+    }
+
+    
 
     // input: Array of bookObjects with {id, book}
     // output: overwrite current display with these books
