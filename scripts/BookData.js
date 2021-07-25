@@ -11,7 +11,9 @@ class BookData{
     constructor(){
         this.#books = this.#loadBooks();
         this.#id = [...Object.keys(this.#books)].reduce(
-            Math.max,
+            function(acc,curr){
+                return Math.max(acc, Number(curr));
+            }
             0
         );
     }
