@@ -15,7 +15,9 @@ class View{
             LIBRARY: document.getElementById("library"),
             CARD_CLASS: "card",
             BTN_REMOVE_CLASS: "btn-remove",
-            BTN_VALUE: "data-value"
+            BTN_VALUE: "data-value",
+            NEW_BOOK_FORM:document.getElementById("new-book-form"),
+            NEW_BOOK_BTN: document.getElementById("new-book")
         };
 
         this.HANDLERS = handlers;
@@ -41,11 +43,7 @@ class View{
         this.#SELECTORS.LIBRARY.appendChild(card);
     }
 
-    // // remove book from display - pass in button node
-    // #removeCardFromDisplay(button){
-    //     const card = button.closest("." + this.#SELECTORS.CARD_CLASS);
-    //     this.#SELECTORS.LIBRARY.removeChild(card);
-    // }
+    
 
     #createRemoveButton(id){
         const removeBtn = document.createElement("button");

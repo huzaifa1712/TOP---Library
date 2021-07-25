@@ -14,7 +14,8 @@ body{
     font-family: 'Source Sans Pro', sans-serif;
     background-color: white;
     margin: 0 auto;
-    width: 65%;
+    width: 60%;
+    height:100vh;
     min-width: 700px;
     border: 2px solid black;
     /* display:grid;
@@ -30,6 +31,21 @@ body{
     gap:1rem;
     justify-items:center;
     padding:2rem
+}
+/* Should ideally be mobile first instead: will focus more on this in later projects*/
+@media screen and (max-width:700px){
+    #library{
+        grid-template-columns: 1fr;
+    }
+
+    body{
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+
+    #new-book-form{
+        
+    }
 }
 
 .card{
@@ -116,6 +132,7 @@ input[type="number"]{
     width:70%;
     padding:1rem;
     border: 1px solid black;
+    min-width: 500px;
 }
 
 #new-book-form p{
