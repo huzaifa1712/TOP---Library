@@ -70,9 +70,16 @@ function Controller(){
     }
 }
 
+
+// const bookObjects = {
+//     0: new Book("Title", "Author", 200, true),
+//     1: new Book("Title2", "Author2", 300, false)
+// }
+
+// localStorage.setItem("books", JSON.stringify(bookObjects));
+
 const controller = Controller();
 controller.init();
-
 
 
 

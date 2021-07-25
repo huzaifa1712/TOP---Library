@@ -15,9 +15,10 @@ body{
     background-color: white;
     margin: 0 auto;
     width: 60%;
-    height:100vh;
+    min-height:100vh;
     min-width: 700px;
     border: 2px solid black;
+    overflow:auto;
     /* display:grid;
     grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
     row-gap: 2rem;
