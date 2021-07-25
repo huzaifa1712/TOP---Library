@@ -68,11 +68,19 @@ class BookData{
         if(this.idExists(id)){
             const curr = this.#books[id];
             newProps = getValidNewProps(curr);
-            this.#books[id] = {...curr, ...newProps};
-            return true;
+            // this.#books[id] = {...curr, ...newProps};
+
+            for (const key in newProps){
+                curr[key] = newProps[key];
+            }
+            
+            return {
+                id,
+                book:this.#books[id]
+            }
         }
 
-        return false;
+        return {}
     }
 
     // Delete with ID

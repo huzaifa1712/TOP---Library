@@ -22,6 +22,7 @@ class View{
         };
 
         this.HANDLERS = handlers;
+        this.empty = false;
 
         this.#setup();
     }
@@ -94,14 +95,13 @@ class View{
             let obj = formDataToObject(new FormData(form));
 
             this.HANDLERS.addBookHandler(obj);
+            formToggler();
         }.bind(this));
     }
 
     #setup(){
         this.#formSetup();
     }
-
-    
 
     // input: Array of bookObjects with {id, book}
     // output: overwrite current display with these books
@@ -119,6 +119,10 @@ class View{
     // input: BookWrapper
     // output: side effect of adding book to display
     addBookToDisplay(bookObj){
+        if(this.empty){
+            this.clearDisplay();
+            this.empty = false;
+        }
         const card = this.#bookToCard(bookObj);
         this.#SELECTORS.LIBRARY.appendChild(card);
     }
@@ -147,9 +151,16 @@ class View{
             <h3>${book.title}</h3>
             <p class = "author">${book.author}</p>
             <p class = "pages">${book.pages} pages</p>
-            <p class = "read">${book.getReadDesc()}</p>
+            <p class = "read" data-read = "${book.read}">${book.getReadDesc()}</p>
             `
-        
+        const read = card.querySelector(".read");
+
+        read.addEventListener('click', function(){
+            const readValue = book.read;
+            const updatedBookDesc = this.HANDLERS.updateBookHandler(id, {read: !readValue}).getReadDesc();
+            read.innerText = updatedBookDesc;
+        }.bind(this));
+
         removeBtn.addEventListener('click', function(){
             this.#SELECTORS.LIBRARY.removeChild(card);
             this.HANDLERS.removeBookHandler(id);        
@@ -163,7 +174,12 @@ class View{
     // to set default message if no books
     setEmptyBooksMessage(){
         const template = "<p> <strong> No books to display. </strong> </p>";
+        this.empty = true;
         this.#SELECTORS.LIBRARY.innerHTML = template;
+    }
+
+    clearDisplay(){
+        this.#SELECTORS.LIBRARY.innerHTML = '';
     }
 }
 

@@ -91,7 +91,7 @@ body{
     margin-bottom: 0.5rem;
 }
 
-#new-book:hover{
+.read:hover,#new-book:hover{
     text-decoration: underline;
     cursor:pointer;
 }

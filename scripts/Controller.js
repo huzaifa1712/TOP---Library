@@ -42,10 +42,20 @@ function Controller(){
         }
     }
 
+
+    function updateBookHandler(id, newProps){
+
+        const newBook = bookData.updateBook(id, newProps);
+        const book = newBook.book;
+
+        return book;
+    }
+
     const bookData = new BookData();
     const view = new View({
         addBookHandler,
-        removeBookHandler
+        removeBookHandler,
+        updateBookHandler
     });
     // get books from data source and display using View
     // convert to BookObject format before passing into View
