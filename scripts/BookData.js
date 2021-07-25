@@ -13,7 +13,7 @@ class BookData{
         this.#id = [...Object.keys(this.#books)].reduce(
             function(acc,curr){
                 return Math.max(acc, Number(curr));
-            }
+            },
             0
         );
     }
