@@ -16,6 +16,32 @@
     <script type = "module" src="scripts/Controller.js" defer></script>
 </head>
     <body>
+        <h3 id = "new-book">Add new book</h3>
+
+        <form id = "new-book-form">
+            <label for = "input-author">Author:  </label>
+            <input id = "input-author" type = "text" required>
+            
+
+            <label for = "input-title">Title: </label>
+            <input id = "input-title" type = "text" required>
+            
+
+            <label for = "input-pages">Pages: </label>
+            <input id = "input-pages" type = "number" min = "1" required>
+            
+            <p>Read?</p>
+            <div>
+                <label for = "input-read-true"> Yes  </label>
+                <input id =  "input-read-true" type = "radio" name = "input-read" required>
+                <label for = "input-read-false"> No  </label>
+                <input id =  "input-read-false" type = "radio" name = "input-read">
+            </div>
+
+            <input type = "submit" value = "Add book">
+            
+        </form>
+
         <div id = "library"> 
 
         </div>

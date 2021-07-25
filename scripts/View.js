@@ -72,7 +72,7 @@ class View{
             <p class = "read">${book.getReadDesc()}</p>
             `
         
-        removeBtn.addEventListener('click', function(evt){
+        removeBtn.addEventListener('click', function(){
             this.#SELECTORS.LIBRARY.removeChild(card);
             this.HANDLERS.removeBookHandler(id);        
         }.bind(this));

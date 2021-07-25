@@ -49,7 +49,7 @@ body{
     font-size: 1.3rem;
 }
 
-.btn-remove{
+.btn-remove, input[type="submit"]{
     padding:0.5rem;
     font-family: inherit;
     font-size: 1em;
@@ -61,6 +61,46 @@ body{
     
 }
 
-.btn-remove:hover{
+.btn-remove:hover, input[type="submit"]:hover{
     background-color: #dbcab4;
 }
+
+#new-book{
+    text-align: center;
+}
+
+#new-book:hover{
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+
+label{
+
+}
+
+input:not([type="radio"]){
+    margin-top:0.3rem;
+    margin-bottom:1rem;
+    padding: 0.2rem 1rem;
+    width:40%;
+    border: 2px outset black;
+}
+
+input[type="number"]{
+    padding:0;
+    width:15%;
+}
+
+
+
+#new-book-form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#new-book-form p{
+    margin: 0.2rem;
+}
+
