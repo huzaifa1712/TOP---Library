@@ -1,6 +1,6 @@
 /**
  * Handles CRUD operations on book data source and conversion to Book class
- * Represent books as array of  { id: n, book: Book obj}
+ * Represent books as Object with id:book
  */
 import Book from './Book.js';
 
@@ -73,7 +73,7 @@ class BookData{
             for (const key in newProps){
                 curr[key] = newProps[key];
             }
-            
+
             return {
                 id,
                 book:this.#books[id]
