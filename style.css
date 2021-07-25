@@ -2,6 +2,9 @@
     box-sizing: border-box;
 }
 
+:root{
+    --card-bg:#f7e7b7d6;
+}
 
 html{
     background-color: whitesmoke;
@@ -32,7 +35,7 @@ body{
 .card{
     text-align: center;
     border:2px solid black;
-    background-color: #f7e7b7d6;
+    background-color: var(--card-bg);
     padding:1.5rem;
     margin:1rem;
     box-shadow: 0px 0px 10px 1px rgba(100, 95, 95, 0.4);
@@ -76,20 +79,31 @@ body{
 
 
 label{
-
+    font-weight: 400;
+    font-size:1.1rem;
 }
 
 input:not([type="radio"]){
     margin-top:0.3rem;
     margin-bottom:1rem;
-    padding: 0.2rem 1rem;
+    padding: 0.3rem 1rem;
     width:40%;
-    border: 2px outset black;
+    border: 1px solid black;
 }
 
+
 input[type="number"]{
-    padding:0;
     width:15%;
+    padding:0;
+    padding-left:1rem;
+    padding-top: 0.3rem;
+    padding-bottom:0.3rem;
+   
+
+}
+
+#submit{
+    margin-top:0.5rem;
 }
 
 
@@ -98,6 +112,10 @@ input[type="number"]{
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin:0 auto;
+    width:70%;
+    padding:1rem;
+    border: 1px solid black;
 }
 
 #new-book-form p{
