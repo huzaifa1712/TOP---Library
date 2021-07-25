@@ -17,7 +17,8 @@ class View{
             BTN_REMOVE_CLASS: "btn-remove",
             BTN_VALUE: "data-value",
             NEW_BOOK_FORM:document.getElementById("new-book-form"),
-            NEW_BOOK_BTN: document.getElementById("new-book")
+            NEW_BOOK_BTN: document.getElementById("new-book"),
+            NEW_BOOK_FORM_SUBMIT: document.getElementById("submit")
         };
 
         this.HANDLERS = handlers;
@@ -50,7 +51,7 @@ class View{
             initial = !initial;
 
             if(initial && showFn){
-                showFn();
+                showFn(element);
             }
 
             this.#setElementDisplay(element, initial);
@@ -58,17 +59,16 @@ class View{
 
     }   
 
-    #formClear(){
-        const form = this.#SELECTORS.NEW_BOOK_FORM;
-        [...form.querySelectorAll('input:not([type="submit"])')].forEach((input) => input.value = '');
-        [...form.querySelectorAll('input[type="radio"]')].forEach((radio) => radio.checked = false);
+    // can just use form.reset() inbuilt method
+    #formClear(form){
+        form.reset()
     }
 
     #formSetup(){
         const form = this.#SELECTORS.NEW_BOOK_FORM;
         form.style.display = "none";
 
-        const formToggler = this.#toggleElementDisplay(form, false, this.#formClear.bind(this));
+        const formToggler = this.#toggleElementDisplay(form, false, this.#formClear);
 
         this.#SELECTORS.NEW_BOOK_BTN.addEventListener('click', function(){
             formToggler();

@@ -1,12 +1,10 @@
 import BookData from './BookData.js';
-import BookObject from './BookObject.js';
+import BookWrapper from './BookWrapper.js';
 import View from './View.js';
 
 function Controller(){
-    
-
     // input: id: book pairs from BookData
-    // output: Array of {id, book} objects according to BookObject
+    // output: Array of {id, book} objects according to BookWrapper
     function booksToBookObjects(books){
         return [...Object.keys(books)].reduce(
             (acc, key) => {
@@ -14,7 +12,7 @@ function Controller(){
                 const meta = {id:key};
              
                 return acc.concat(
-                    BookObject(book, meta)
+                    BookWrapper(book, meta)
                 );
             }, 
             []

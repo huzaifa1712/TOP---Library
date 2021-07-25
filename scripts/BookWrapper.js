@@ -2,7 +2,7 @@
  * BookObject representation to turn Book objects from BookData to format for View
  * 
  */
-function BookObject(book, metadata){
+function BookWrapper(book, metadata){
     const obj = {book};
 
     for(let key in metadata){
@@ -11,4 +11,4 @@ function BookObject(book, metadata){
     return obj;
 }
 
-export default BookObject;
+export default BookWrapper;
