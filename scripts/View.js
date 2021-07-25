@@ -42,22 +42,33 @@ class View{
     // set to the opposite of what it is. initial: true means show at first, false means don't show at first
     // use closures and HOF to create an abstract toggler function for any element, setting display also abstracted due to 
     // setElementDisplay
-    #toggleElementDisplay(element, initial){
+    #toggleElementDisplay(element, initial, showFn){
 
         this.#setElementDisplay(element, initial);
 
         return (() => {
             initial = !initial;
+
+            if(initial && showFn){
+                showFn();
+            }
+
             this.#setElementDisplay(element, initial);
         });
 
     }   
 
+    #formClear(){
+        const form = this.#SELECTORS.NEW_BOOK_FORM;
+        [...form.querySelectorAll('input:not([type="submit"])')].forEach((input) => input.value = '');
+        [...form.querySelectorAll('input[type="radio"]')].forEach((radio) => radio.checked = false);
+    }
+
     #formSetup(){
         const form = this.#SELECTORS.NEW_BOOK_FORM;
         form.style.display = "none";
 
-        const formToggler = this.#toggleElementDisplay(form, false);
+        const formToggler = this.#toggleElementDisplay(form, false, this.#formClear.bind(this));
 
         this.#SELECTORS.NEW_BOOK_BTN.addEventListener('click', function(){
             formToggler();

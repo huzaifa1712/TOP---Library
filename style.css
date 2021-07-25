@@ -31,6 +31,7 @@ body{
     gap:1rem;
     justify-items:center;
     padding:2rem
+    margin-top:0.5rem;
 }
 /* Should ideally be mobile first instead: will focus more on this in later projects*/
 @media screen and (max-width:700px){
@@ -86,6 +87,8 @@ body{
 
 #new-book{
     text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 #new-book:hover{
