@@ -15,7 +15,7 @@ class BookData{
                 return Math.max(acc, Number(curr));
             },
             0
-        );
+        ) + 1;
     }
 
     // load books from local storage if possible and convert to Book objects, return as id:book 
