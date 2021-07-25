@@ -1,3 +1,4 @@
+import Book from './Book.js';
 import BookData from './BookData.js';
 import BookWrapper from './BookWrapper.js';
 import View from './View.js';
@@ -19,6 +20,20 @@ function Controller(){
         );
     }
 
+    // input: input from form as key-value pairs object, output: side effect of adding book to display and model
+    function addBookHandler(formInput){
+        let {
+            "input-title": title,
+            "input-author":author,
+            "input-pages":pages,
+            "input-read":read
+        } = formInput;
+
+        const bookObj =  bookData.addBook(title, author, pages, read);
+
+        view.addBookToDisplay(bookObj);
+    }
+
     function removeBookHandler(id){
         bookData.deleteBook(id);
 
@@ -29,7 +44,8 @@ function Controller(){
 
     const bookData = new BookData();
     const view = new View({
-        removeBookHandler:removeBookHandler
+        addBookHandler,
+        removeBookHandler
     });
     // get books from data source and display using View
     // convert to BookObject format before passing into View

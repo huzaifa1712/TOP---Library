@@ -20,22 +20,22 @@
 
         <form id = "new-book-form">
             <label for = "input-author">Author:  </label>
-            <input id = "input-author" type = "text" placeholder= "e.g Herman Melville" required>
+            <input id = "input-author" type = "text" placeholder= "e.g Herman Melville" name = "input-author" required>
             
 
             <label for = "input-title">Title: </label>
-            <input id = "input-title" type = "text" placeholder =  "e.g Moby Dick"required>
+            <input id = "input-title" type = "text" placeholder =  "e.g Moby Dick" name = "input-title" required>
             
 
             <label for = "input-pages">Pages: </label>
-            <input id = "input-pages" type = "number" min = "1" required>
+            <input id = "input-pages" type = "number" min = "1" name = "input-pages" required>
             
             <p>Read?</p>
             <div>
                 <label for = "input-read-true"> Yes  </label>
-                <input id =  "input-read-true" type = "radio" name = "input-read" required>
+                <input id =  "input-read-true" type = "radio" name = "input-read" value = "yes" required>
                 <label for = "input-read-false"> No  </label>
-                <input id =  "input-read-false" type = "radio" name = "input-read">
+                <input id =  "input-read-false" type = "radio" name = "input-read" value = "no" >
             </div>
 
             <input id = "submit" type = "submit" value = "Add book">

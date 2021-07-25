@@ -65,6 +65,20 @@ class View{
     }
 
     #formSetup(){
+        // convert FormData object to key value pairs
+        function formDataToObject(data){
+            const obj = {};
+            for (const arr of data.entries()){
+                const [key,value] = arr;
+                obj[key] = value.trim();
+            }
+
+            obj["input-pages"] = Number(obj["input-pages"]);
+            obj["input-read"] = obj["input-read"] == "yes" ? true : false;
+
+            return obj;
+        }
+
         const form = this.#SELECTORS.NEW_BOOK_FORM;
         form.style.display = "none";
 
@@ -73,6 +87,13 @@ class View{
         this.#SELECTORS.NEW_BOOK_BTN.addEventListener('click', function(){
             formToggler();
 
+        }.bind(this));
+
+        form.addEventListener('submit', function(evt){
+            evt.preventDefault();
+            let obj = formDataToObject(new FormData(form));
+
+            this.HANDLERS.addBookHandler(obj);
         }.bind(this));
     }
 
@@ -95,7 +116,7 @@ class View{
         });
     }
 
-    // input: Book object
+    // input: BookWrapper
     // output: side effect of adding book to display
     addBookToDisplay(bookObj){
         const card = this.#bookToCard(bookObj);
