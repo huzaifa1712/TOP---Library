@@ -9,24 +9,11 @@ class BookData{
     #books;
     #id; // counter for next id to use for next book added
     constructor(){
-        console.log("hey");
-
-        // Use a object with id as key, Book object as value for easier access/update
-        // // Chosen over Array even though similar to avoid empty slots issue
-        // this.#books = {
-        //     0:new Book("Meditations", "Marcus Aurelius", 304, true),
-        //     1:new Book("The Obstacle Is The Way", "Ryan Holiday", 224, false),
-        //     // 2:new Book("Man's Search For Meaning", "Viktor Frankl", 200, false),
-        //     // 3:new Book("The Three-Body Problem", "Liu Cixin", 302, true),
-        //     // 4:new Book("1984", "George Orwell", 328, true),
-        //     // 5:new Book("Animal Farm", "George Orwell", 112, true),
-        //     // 6:new Book("A Brief History Of Time", "Stephen Hawking", 256, false)
-        // };
-
         this.#books = this.#loadBooks();
-       
-
-        this.#id = Object.keys(this.#books).length;
+        this.#id = [...Object.keys(this.#books)].reduce(
+            Math.max,
+            0
+        );
     }
 
     // load books from local storage if possible and convert to Book objects, return as id:book 
@@ -62,11 +49,8 @@ class BookData{
         const newBook = new Book(title, author, pages, read);
         const id = this.#getID();
         this.#books[id] = newBook;
-        
         this.#updateDB();
-        
         this.#incrementID();
-
         return {id, book:newBook};
     }
 
@@ -107,6 +91,7 @@ class BookData{
                 curr[key] = newProps[key];
             }
 
+
             this.#updateDB();
 
             return {
@@ -135,6 +120,21 @@ class BookData{
 
     #incrementID(){
         this.#id++;
+    }
+
+    #addTestData(){
+        const books= {
+            0:new Book("Meditations", "Marcus Aurelius", 304, true),
+            1:new Book("The Obstacle Is The Way", "Ryan Holiday", 224, false),
+            2:new Book("Man's Search For Meaning", "Viktor Frankl", 200, false),
+            3:new Book("The Three-Body Problem", "Liu Cixin", 302, true),
+            4:new Book("1984", "George Orwell", 328, true),
+            5:new Book("Animal Farm", "George Orwell", 112, true),
+            6:new Book("A Brief History Of Time", "Stephen Hawking", 256, false)
+        };
+    
+        localStorage.setItem("books", JSON.stringify(books));
+        
     }
 
 }
