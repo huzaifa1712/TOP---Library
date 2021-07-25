@@ -41,22 +41,17 @@ class View{
         this.#SELECTORS.LIBRARY.appendChild(card);
     }
 
-    // remove book from display - pass in button node
-    #removeCardFromDisplay(button){
-        const card = button.closest("." + this.#SELECTORS.CARD_CLASS);
-        this.#SELECTORS.LIBRARY.removeChild(card);
-    }
+    // // remove book from display - pass in button node
+    // #removeCardFromDisplay(button){
+    //     const card = button.closest("." + this.#SELECTORS.CARD_CLASS);
+    //     this.#SELECTORS.LIBRARY.removeChild(card);
+    // }
 
     #createRemoveButton(id){
         const removeBtn = document.createElement("button");
         removeBtn.classList.add(this.#SELECTORS.BTN_REMOVE_CLASS);
         removeBtn.setAttribute(this.#SELECTORS.BTN_VALUE, id);
         removeBtn.textContent = "Remove";
-
-        removeBtn.addEventListener('click', function(evt){
-            this.#removeCardFromDisplay(removeBtn);
-            this.HANDLERS.removeBookHandler(id);        
-        }.bind(this));
 
         return removeBtn;
     }
@@ -77,6 +72,11 @@ class View{
             <p class = "read">${book.getReadDesc()}</p>
             `
         
+        removeBtn.addEventListener('click', function(evt){
+            this.#SELECTORS.LIBRARY.removeChild(card);
+            this.HANDLERS.removeBookHandler(id);        
+        }.bind(this));
+
         card.appendChild(removeBtn);
 
         return card;
