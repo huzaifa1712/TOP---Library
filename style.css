@@ -129,7 +129,7 @@ input[type="number"]{
 
 
 #new-book-form{
-    display:flex;
+    display:none;
     flex-direction: column;
     align-items: center;
     margin:0 auto;
