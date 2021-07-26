@@ -101,6 +101,7 @@ class View{
 
     #setup(){
         this.#formSetup();
+        this.#setElementDisplay(this.#SELECTORS.NEW_BOOK_FORM, false);
     }
 
     // input: Array of bookObjects with {id, book}
