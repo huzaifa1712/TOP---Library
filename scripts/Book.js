@@ -1,9 +1,5 @@
 /**
  * Object representation of Book class. Use prototype to make extensibility more efficient.
- * @param {String} title Title of the book
- * @param {String} author Author of the book
- * @param {Integer} pages Positive integer denoting number of pages in the book
- * @param {Boolean} read  Boolean indicating if the book has been read 
  */
 function Book(title, author, pages, read){
     this.title = title;

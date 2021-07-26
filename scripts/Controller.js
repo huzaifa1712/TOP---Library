@@ -1,4 +1,3 @@
-import Book from './Book.js';
 import BookData from './BookData.js';
 import BookWrapper from './BookWrapper.js';
 import View from './View.js';
@@ -57,6 +56,7 @@ function Controller(){
         removeBookHandler,
         updateBookHandler
     });
+
     // get books from data source and display using View
     // convert to BookObject format before passing into View
     function init(){
@@ -72,37 +72,8 @@ function Controller(){
 
 
 
-
-
-// const bookObjects = {
-//     0: new Book("Title", "Author", 200, true),
-//     1: new Book("Title2", "Author2", 300, false)
-// }
-
-// localStorage.setItem("books", JSON.stringify(bookObjects));
-
 const controller = Controller();
 controller.init();
-
-
-
-
-
-
-// const data = new BookData();
-// console.log(data.getBooks());
-// data.addBook("title", "author", 20, true);
-// console.log(data.getBooks());
-// data.addBook("title2", "author2", 30, false);
-// console.log(data.getBooks());
-// data.addBook("title3", "author3", 50, true);
-// console.log(data.getBooks());
-// console.log(data.deleteBook(1));
-// console.log(data.getBooks());
-
-// data.addBook("title4", "author4", 20, false);
-// console.log(data.getBooks());
-
 
 
 
